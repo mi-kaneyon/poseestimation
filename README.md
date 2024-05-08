@@ -25,7 +25,7 @@ python tmu_calc.py
 
 ### Raw pose record by torch_posecnt.py
 
-
+- Raw data is recorded each part X/Y coordinates　data 
 
 | part  | X | Y | Visibility |
 | ------------- | ------------- | ------------- | ------------- |
