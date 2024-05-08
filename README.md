@@ -49,6 +49,9 @@ python tmu_calc.py
 
 ![poseimage](sample.png)
 
+![poseimage](hand.png)
+
+
 # Requirement
 
 ## Utilized MediaPipe and pytorch 
