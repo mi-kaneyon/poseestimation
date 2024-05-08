@@ -31,8 +31,6 @@ python tmu_calc.py
 | Hand_Landmark_2 | 0.37304276227951 | 0.285368204116821 | 1 |
 | Hand_Landmark_3 | 0.394926190376282 | 0.283487766981125 | 1 |
 
-![image](https://github.com/mi-kaneyon/poseestimation/assets/53809036/75f3a008-452c-4376-bb0b-fc94946ed6b4)
-
 
 ### Calculated working time
 
