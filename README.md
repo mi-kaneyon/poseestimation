@@ -34,3 +34,15 @@ python tmu_calc.py
 # Detection sample
 
 ![poseimage](sample.png)
+
+# Requirement
+
+## Utilized MediaPipe and pytorch 
+https://developers.google.com/mediapipe
+
+```
+pip install opencv-python
+pip install mediapipe
+pip install Pillow
+
+```
