@@ -17,19 +17,18 @@ python tmu_calc.py
 
 ```
 
-```
-# output example 
 
-0	Total TMU	Total Time
-body_core_Landmark_	2.3732892125845	140.163228609999
-face_Landmark_	11.0471727277378	770.897757354996
-left_arm_Landmark_	10.4611928994656	420.489685829998
-legs_Landmark_	19.0501514985608	560.652914439997
-right_arm_Landmark_	10.3954701885979	420.489685829998
+## output example 
 
 
+| part  | implemented TMU | Total time |
+| ------------- | ------------- | ------------- |
+| body_core_Landmark_  | 2.3732892125845  | 140.163228609999  |
+| face_Landmark_  | 11.0471727277378  | 770.897757354996  |
+| left_arm_Landmark_  | 10.4611928994656  | 420.489685829998  |
+| legs_Landmark_  | 19.0501514985608  | 560.652914439997  |
+| right_arm_Landmark_  | 10.3954701885979  | 420.489685829998  |
 
-```
 # Detection sample
 
 ![poseimage](sample.png)
