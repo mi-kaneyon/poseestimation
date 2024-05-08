@@ -21,7 +21,7 @@ python tmu_calc.py
 ## output example 
 
 - worker pick up box and bring to the table
-- It is stop watch estimation and PTS method hybrid
+- It is stop watch estimation and MTM/MOST method hybrid
 
 | part  | implemented TMU | Total time |
 | ------------- | ------------- | ------------- |
