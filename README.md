@@ -23,6 +23,19 @@ python tmu_calc.py
 - worker pick up box and bring to the table
 - It is stop watch estimation and MTM/MOST method hybrid
 
+### Raw pose record by torch_posecnt.py
+
+| part  | X | Y | Visibility |
+| Hand_Landmark_0 | 0.345010757446289 | 0.353788286447525 | 1 |
+| Hand_Landmark_1 | 0.353723466396332 | 0.310025036334991 | 1 |
+| Hand_Landmark_2 | 0.37304276227951 | 0.285368204116821 | 1 |
+| Hand_Landmark_3 | 0.394926190376282 | 0.283487766981125 | 1 |
+
+![image](https://github.com/mi-kaneyon/poseestimation/assets/53809036/75f3a008-452c-4376-bb0b-fc94946ed6b4)
+
+
+### Calculated working time
+
 | part  | implemented TMU | Total time |
 | ------------- | ------------- | ------------- |
 | body_core_Landmark_  | 2.3732892125845  | 140.163228609999  |
