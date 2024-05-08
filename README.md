@@ -30,3 +30,6 @@ right_arm_Landmark_	10.3954701885979	420.489685829998
 
 
 ```
+# Detection sample
+
+![poseimage](sample.png)
