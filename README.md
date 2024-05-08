@@ -37,7 +37,7 @@ python tmu_calc.py
 
 ### Calculated working time
 
-| part  | implemented TMU | Total time |
+| part  | working time from TMU | RAW TMU |
 | ------------- | ------------- | ------------- |
 | body_core_Landmark_  | 2.3732892125845  | 140.163228609999  |
 | face_Landmark_  | 11.0471727277378  | 770.897757354996  |
