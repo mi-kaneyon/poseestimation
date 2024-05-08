@@ -25,7 +25,10 @@ python tmu_calc.py
 
 ### Raw pose record by torch_posecnt.py
 
+
+
 | part  | X | Y | Visibility |
+| ------------- | ------------- | ------------- | ------------- |
 | Hand_Landmark_0 | 0.345010757446289 | 0.353788286447525 | 1 |
 | Hand_Landmark_1 | 0.353723466396332 | 0.310025036334991 | 1 |
 | Hand_Landmark_2 | 0.37304276227951 | 0.285368204116821 | 1 |
