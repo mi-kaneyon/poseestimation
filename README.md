@@ -63,3 +63,8 @@ pip install mediapipe
 pip install Pillow
 
 ```
+
+
+# supplement (Japanese / English)
+
+https://zenn.dev/manyan3/articles/738b524f197df2
