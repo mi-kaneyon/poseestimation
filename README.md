@@ -1,5 +1,5 @@
 # Pose Estimation simply
-Pytyorch and mediapipe working time calculation project
+Pytorch and mediapipe working time calculation project
 - pose estimation is utilized worker's working time estimation with simple control
 - implemented mediapipe for working time estimation scripts
 
