@@ -1,4 +1,6 @@
 # Semi-automatic MTM/MOST working time measurement generator
+- standard working time estimation system
+  
 # Pose Estimation simply
 Pytorch and mediapipe working time calculation project
 - pose estimation is utilized worker's working time estimation with simple control
@@ -55,7 +57,7 @@ python tmu_calc.py
 
 # Requirement
 
-## Utilized MediaPipe and pytorch 
+## Utilized MediaPipe and pytorch メッセージをここに
 https://developers.google.com/mediapipe
 
 ```
