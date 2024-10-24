@@ -57,7 +57,7 @@ python tmu_calc.py
 
 # Requirement
 
-## Utilized MediaPipe and pytorch メッセージをここに
+## Utilized MediaPipe and pytorch 
 https://developers.google.com/mediapipe
 
 ```
