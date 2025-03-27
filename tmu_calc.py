@@ -1,41 +1,59 @@
 import pandas as pd
+import numpy as np
+import math
 
-# CSVファイルの読み込み
-df = pd.read_csv('movement_log.csv')
+# --- 1) Read summary data from CSV (e.g., tmu_summary_updated.csv) ---
+df_summary = pd.read_csv('tmu_summary_updated.csv', index_col=0)
 
-# 基本的なデータ処理
-df['X'] = pd.to_numeric(df['X'], errors='coerce')
-df['Y'] = pd.to_numeric(df['Y'], errors='coerce')
-df['Timestamp'] = pd.to_numeric(df['Timestamp'], errors='coerce')
+# Retrieve the "Overall Total" row to extract the skilled worker's work time
+if 'Overall Total' not in df_summary.index:
+    print("Error: 'Overall Total' row not found in summary data.")
+    exit()
 
-# 差分計算
-df['diff_X'] = df.groupby('Part')['X'].diff().fillna(0)
-df['diff_Y'] = df.groupby('Part')['Y'].diff().fillna(0)
-df['time_diff'] = df.groupby('Part')['Timestamp'].diff().fillna(0)
+overall = df_summary.loc['Overall Total']
+mean = overall['Total Time']  # Use the skilled worker's work time as the standard (mean)
+sigma = 0.1 * mean            # Assume standard deviation is 10% of the mean
 
-# 各キーポイントの変位計算
-df['total_diff'] = (df['diff_X'].abs() + df['diff_Y'].abs())
+# --- 2) Generate normal distribution data ---
+num_points = 50  # Number of points for the normal distribution curve
+x_vals = np.linspace(mean - 3*sigma, mean + 3*sigma, num_points)
+y_vals = (1 / (sigma * np.sqrt(2 * math.pi))) * np.exp(-((x_vals - mean)**2) / (2 * sigma**2))
 
-# カテゴリごとの重み付け設定
-weights = {
-    'Pose_Landmark': 1.0,
-    'Face_Landmark': 0.7,
-    'Hand_Landmark': 0.9
-}
+# Create a DataFrame for chart data (only the normal distribution curve)
+chart_data = pd.DataFrame({'x': x_vals, 'y': y_vals})
 
-# 重み付けとTMU係数の適用
-def apply_tmu(row):
-    part_type = row['Part'].split('_')[0] + '_Landmark'  # 'Pose_Landmark'などの抽出
-    weight = weights.get(part_type, 1.0)  # 未定義の場合は重みを1とする
-    return row['total_diff'] * weight * 0.036  # TMU係数の適用
+# --- 3) Write to Excel file and create chart ---
+output_file = 'tmu_summary_with_chart.xlsx'
+with pd.ExcelWriter(output_file, engine='xlsxwriter') as writer:
+    # Write the summary data to the "Summary" sheet
+    df_summary.to_excel(writer, sheet_name='Summary')
+    
+    # Write the chart data to the "ChartData" sheet (including header)
+    chart_data.to_excel(writer, sheet_name='ChartData', index=False)
+    
+    # Get workbook and create a worksheet for the chart
+    workbook  = writer.book
+    chart_ws = workbook.add_worksheet('Chart')
+    
+    # Create a line chart
+    chart = workbook.add_chart({'type': 'line'})
+    
+    # Add the normal distribution series:
+    # In Excel, row 0 is the header; the data starts at row 1.
+    # Thus, rows 1 to 50 correspond to the normal distribution data (A2:A51 for x, B2:B51 for y).
+    chart.add_series({
+        'name':       'Normal Distribution',
+        'categories': ['ChartData', 1, 0, num_points, 0],  # X-axis: A2:A51
+        'values':     ['ChartData', 1, 1, num_points, 1],  # Y-axis: B2:B51
+        'line':       {'color': 'black'}
+    })
+    
+    # Set the chart title and axis labels
+    chart.set_title({'name': 'Normal Distribution of Work Time'})
+    chart.set_x_axis({'name': 'Work Time'})
+    chart.set_y_axis({'name': 'Probability Density'})
+    
+    # Insert the chart into the "Chart" sheet
+    chart_ws.insert_chart('B2', chart, {'x_scale': 2.0, 'y_scale': 1.5})
 
-df['weighted_tmu'] = df.apply(apply_tmu, axis=1)
-
-# 各カテゴリごとに集計
-summary = df.groupby(df['Part'].str.extract(r'(\D+)')[0])[['weighted_tmu', 'time_diff']].sum()
-summary.columns = ['Total TMU', 'Total Time']
-
-# 結果のCSV出力
-summary.to_csv('tmu_summary_updated.csv')
-
-print("更新されたTMU計算が完了し、tmu_summary_updated.csvに保存されました。")
+print(f"Excel file {output_file} with the chart has been saved.")
