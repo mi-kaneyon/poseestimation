@@ -1,3 +1,40 @@
+# Updated 2025 version
+## Comparing veteran working style with novice worker mode
+1. Adding normal distribution graph mode for the veteran and novice working time.
+2. Auto calculation to improve your work efficiency
+3. Recording veteran worker's working recording is upgraded to create statistics.
+
+## How to
+
+1. Recording veteran worker's working actual view
+
+```
+python torch_posecnt.py
+
+```
+ - The script will be output working time based on MTM/ MOST method.
+
+2. Generate reference worker data
+
+```
+python tmu_calc.py
+
+```
+3. Comparision reference worker data 
+
+```
+python torch_movecom.py
+
+```
+
+
+
+# sample image
+- Left side person is actual worker who is recording the working time.
+- Right side person is reference worker data 
+
+
+
 # Semi-automatic MTM/MOST working time measurement generator
 - standard working time estimation system
   
@@ -20,6 +57,7 @@ python tmu_calc.py
 
 ```
 
+![poseimage](newsample.png)
 
 ## output example 
 
